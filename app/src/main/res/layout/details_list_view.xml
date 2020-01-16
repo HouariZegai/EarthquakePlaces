@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtDatetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2011-03-11 04:46:23"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtDepth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24.4"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtLng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="142.369"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtSrc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="us"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtEqid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="c0001xgp"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtMagnitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8.8"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="38.322"
+        android:layout_marginLeft="8dp" />
+
+
+</LinearLayout>
