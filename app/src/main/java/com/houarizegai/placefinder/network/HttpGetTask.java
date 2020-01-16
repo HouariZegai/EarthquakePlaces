@@ -1,7 +1,6 @@
 package com.houarizegai.placefinder.network;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
@@ -58,7 +57,8 @@ public class HttpGetTask extends AsyncTask<Void, Void, String> {
 	@Override
 	protected void onPostExecute(String result) {
 		TextView txtData = activity.findViewById(R.id.txtData);
-		txtData.setText(String.valueOf(Utils.extractEarthquake(result)));
+		//txtData.setText(String.valueOf(Utils.extractEarthquakes(result)));
+		txtData.setText(result);
 	}
 
 	private String readStream(InputStream in) {

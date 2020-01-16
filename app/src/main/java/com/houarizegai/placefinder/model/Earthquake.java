@@ -1,4 +1,4 @@
-package com.houarizegai.placefinder.network.model;
+package com.houarizegai.placefinder.model;
 
 public class Earthquake {
     private String datetime;
