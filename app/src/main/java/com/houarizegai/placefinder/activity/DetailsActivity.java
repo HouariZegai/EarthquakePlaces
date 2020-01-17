@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.houarizegai.placefinder.R;
 import com.houarizegai.placefinder.adapter.EarthquakeAdapter;
+import com.houarizegai.placefinder.database.EarthquakeDB;
 import com.houarizegai.placefinder.model.Earthquake;
 
 import java.util.ArrayList;
@@ -26,8 +27,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         listViewEarthquake = findViewById(R.id.listViewEarthquake);
 
-        ArrayList<Earthquake> earthquakes = new ArrayList<>();
-        // Need to load data from SQLite database
+        // Load data from SQLite database
+        EarthquakeDB earthquakeDB = new EarthquakeDB(this);
+        ArrayList<Earthquake> earthquakes = earthquakeDB.getAll();
 
         EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(this, earthquakes);
         listViewEarthquake.setAdapter(earthquakeAdapter);

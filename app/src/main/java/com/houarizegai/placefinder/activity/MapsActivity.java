@@ -52,6 +52,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void onSearch(View view) {
+        new HttpGetTask(this).execute();
+
         String location = txtLocation.getText().toString();
         if(location.isEmpty()) {
             Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
@@ -78,7 +80,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void onDetails(View view) {
-        new HttpGetTask(this).execute();
         Intent intent = new Intent(this, DetailsActivity.class);
         startActivity(intent);
     }

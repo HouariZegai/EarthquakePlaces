@@ -9,6 +9,16 @@ public class Earthquake {
     private double magnitude;
     private double lat;
 
+    public Earthquake(String datetime, double depth, double lng, String src, String eqid, double magnitude, double lat) {
+        this.datetime = datetime;
+        this.depth = depth;
+        this.lng = lng;
+        this.src = src;
+        this.eqid = eqid;
+        this.magnitude = magnitude;
+        this.lat = lat;
+    }
+
     public String getDatetime() {
         return datetime;
     }

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.houarizegai.placefinder.R;
+import com.houarizegai.placefinder.database.EarthquakeDB;
+import com.houarizegai.placefinder.model.Earthquake;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -15,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class HttpGetTask extends AsyncTask<Void, Void, String> {
 
@@ -56,8 +59,14 @@ public class HttpGetTask extends AsyncTask<Void, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
+		ArrayList<Earthquake> earthquakes = Utils.extractEarthquakes(result);
+
+		EarthquakeDB earthquakeDB = new EarthquakeDB(activity.getApplicationContext());
+		earthquakeDB.addAll(earthquakes);
+
+		// For testing
 		TextView txtData = activity.findViewById(R.id.txtData);
-		//txtData.setText(String.valueOf(Utils.extractEarthquakes(result)));
+		txtData.setText(String.valueOf(earthquakes));
 		txtData.setText(result);
 	}
 
