@@ -4,10 +4,15 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.houarizegai.placefinder.R;
-import com.houarizegai.placefinder.database.EarthquakeDB;
-import com.houarizegai.placefinder.model.Earthquake;
+import com.houarizegai.placefinder.activity.MapsActivity;
+import com.houarizegai.placefinder.database.GeonamesDB;
+import com.houarizegai.placefinder.model.Geoname;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -19,28 +24,30 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class HttpGetTask extends AsyncTask<Void, Void, String> {
+public class HttpGetTask extends AsyncTask<String, String, String> {
 
-	public Activity activity;
+	public MapsActivity activity;
 
 	private static final String TAG = "HttpGetTask";
 
-	// Get your own user name at http://www.geonames.org/login
 	private static final String USER_NAME = "houarizegai";
-	private static final String URL = "http://api.geonames.org/earthquakesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username="
-			+ USER_NAME;
 
-	public HttpGetTask(Activity activity) {
+	public HttpGetTask(MapsActivity activity) {
 		this.activity = activity;
 	}
 
 	@Override
-	protected String doInBackground(Void... params) {
+	protected String doInBackground(String... params) {
 		String data = null;
 		HttpURLConnection httpUrlConnection = null;
 
+
+		String url = new StringBuilder("http://api.geonames.org/searchJSON?q=").append(params[0])
+				.append("&maxRows=10&username=").append(USER_NAME).toString();
+
+		Log.e(TAG, "Params length:" + params.length + " url=" + url);
 		try {
-			httpUrlConnection = (HttpURLConnection) new URL(URL).openConnection();
+			httpUrlConnection = (HttpURLConnection) new URL(url).openConnection();
 			Log.e(TAG, "Success passed -> httpUrlConnection");
 			InputStream in = new BufferedInputStream(httpUrlConnection.getInputStream());
 			Log.e(TAG, "Success passed -> InputStream");
@@ -59,15 +66,25 @@ public class HttpGetTask extends AsyncTask<Void, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		ArrayList<Earthquake> earthquakes = Utils.extractEarthquakes(result);
+		ArrayList<Geoname> geonames = Utils.extractEarthquakes(result);
 
-		EarthquakeDB earthquakeDB = new EarthquakeDB(activity.getApplicationContext());
-		earthquakeDB.addAll(earthquakes);
+		if(geonames == null || geonames.size() < 1) {
+			Toast.makeText(activity, "Internet connection failed or place not found!", Toast.LENGTH_LONG).show();
+			return;
+		}
 
-		// For testing
-		TextView txtData = activity.findViewById(R.id.txtData);
-		txtData.setText(String.valueOf(earthquakes));
-		txtData.setText(result);
+		GeonamesDB geonamesDB = new GeonamesDB(activity.getApplicationContext());
+		geonamesDB.addAll(geonames);
+
+		LatLng latlng = null;
+		for(Geoname geoname : geonames) {
+			// Add a marker in Sydney and move the camera
+			latlng = new LatLng(Double.parseDouble(geoname.getLat()), Double.parseDouble(geoname.getLng()));
+			activity.mMap.addMarker(new MarkerOptions().position(latlng).title(geoname.getToponymName()));
+		}
+
+		activity.mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+		activity.mMap.animateCamera(CameraUpdateFactory.zoomBy(2f));
 	}
 
 	private String readStream(InputStream in) {

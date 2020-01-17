@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.houarizegai.placefinder.R;
-import com.houarizegai.placefinder.adapter.EarthquakeAdapter;
-import com.houarizegai.placefinder.database.EarthquakeDB;
-import com.houarizegai.placefinder.model.Earthquake;
+import com.houarizegai.placefinder.adapter.GeonamesAdapter;
+import com.houarizegai.placefinder.database.GeonamesDB;
+import com.houarizegai.placefinder.model.Geoname;
 
 import java.util.ArrayList;
 
@@ -28,10 +26,10 @@ public class DetailsActivity extends AppCompatActivity {
         listViewEarthquake = findViewById(R.id.listViewEarthquake);
 
         // Load data from SQLite database
-        EarthquakeDB earthquakeDB = new EarthquakeDB(this);
-        ArrayList<Earthquake> earthquakes = earthquakeDB.getAll();
+        GeonamesDB geonamesDB = new GeonamesDB(this);
+        ArrayList<Geoname> geonames = geonamesDB.getAll();
 
-        EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(this, earthquakes);
+        GeonamesAdapter earthquakeAdapter = new GeonamesAdapter(this, geonames);
         listViewEarthquake.setAdapter(earthquakeAdapter);
     }
 
