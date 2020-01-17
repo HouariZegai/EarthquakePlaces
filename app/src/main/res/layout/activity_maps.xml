@@ -9,7 +9,6 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignEnd="@+id/dataView"
         android:layout_marginEnd="-145dp" />
 
     <LinearLayout
@@ -20,7 +19,7 @@
         android:layout_alignParentTop="true" >
 
         <EditText
-            android:id="@+id/txtLocation"
+            android:id="@+id/editLocation"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -33,28 +32,15 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtData"
-        android:layout_width="315dp"
-        android:layout_height="485dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="153dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="93dp"
-        android:hint="Data..."
-        android:textSize="18sp"
-        android:background="#EEE"/>
-
     <Button
-        android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_width="135dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:background="@drawable/rounded_edit"
         android:text="Details"
-        android:textSize="19sp"
+        android:textSize="17sp"
         android:onClick="onDetails"/>
 
 </RelativeLayout>
