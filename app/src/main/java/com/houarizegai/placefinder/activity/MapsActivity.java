@@ -1,8 +1,6 @@
 package com.houarizegai.placefinder.activity;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,17 +8,12 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.houarizegai.placefinder.R;
-import com.houarizegai.placefinder.network.HttpGetTask;
-
-import java.io.IOException;
-import java.util.List;
+import com.houarizegai.placefinder.network.HttpGetEarthquakeTask;
+import com.houarizegai.placefinder.network.HttpGetGeonamesTask;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -54,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         EditText editLocation = findViewById(R.id.editLocation);
-        new HttpGetTask(this).execute(editLocation.getText().toString());
+        new HttpGetGeonamesTask(this).execute(editLocation.getText().toString());
     }
 
     public void onDetails(View view) {

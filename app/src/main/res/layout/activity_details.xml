@@ -7,11 +7,489 @@
     android:layout_height="match_parent"
     tools:context=".activity.DetailsActivity">
 
-    <ListView
-        android:id="@+id/listViewEarthquake"
+    <TableLayout
+        android:id="@+id/earthquakeTable"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+        
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDatetime8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDepth8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLng8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtSrc8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEqid8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtMagnitude8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+                <TextView
+                    android:id="@+id/txtLat8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
 
     <Button
         android:layout_width="match_parent"

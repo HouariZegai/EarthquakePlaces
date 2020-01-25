@@ -1,5 +1,6 @@
 package com.houarizegai.placefinder.network;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -7,8 +8,10 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.houarizegai.placefinder.activity.DetailsActivity;
 import com.houarizegai.placefinder.activity.MapsActivity;
-import com.houarizegai.placefinder.database.GeonamesDB;
+import com.houarizegai.placefinder.database.EarthquakeDB;
+import com.houarizegai.placefinder.model.Earthquake;
 import com.houarizegai.placefinder.model.Geoname;
 
 import java.io.BufferedInputStream;
@@ -21,32 +24,33 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class HttpGetGeonamesTask extends AsyncTask<String, String, String> {
-
-	public static Geoname locationGeoname;
-
+public class HttpGetEarthquakeTask extends AsyncTask<Void, Void, String> {
 	public MapsActivity activity;
 
-	private static final String TAG = "HttpGetGeonamesTask";
+	private static final String TAG = "HttpGetEarthquakesTask";
 
 	private static final String USER_NAME = "houarizegai";
-	private static String endPointNearByPlace;
+	private static String EARTHQUAKE_ENDPOINT;
 
-	public HttpGetGeonamesTask(MapsActivity activity) {
+	public HttpGetEarthquakeTask(MapsActivity activity) {
 		this.activity = activity;
 	}
 
 	@Override
-	protected String doInBackground(String... params) {
-		endPointNearByPlace = new StringBuilder("http://api.geonames.org/searchJSON?q=").append(params[0])
-				.append("&maxRows=10&username=").append(USER_NAME).toString();
+	protected String doInBackground(Void... params) {
+
+		EARTHQUAKE_ENDPOINT = "http://api.geonames.org/earthquakesJSON?north=" +  (Double.parseDouble(HttpGetGeonamesTask.locationGeoname.getLat()) + 1)
+				+ "&south=" + (Double.parseDouble(HttpGetGeonamesTask.locationGeoname.getLat()) - 1)
+				+ "&east=" + (Double.parseDouble(HttpGetGeonamesTask.locationGeoname.getLng()) + 1)
+				+ "&west=" +  (Double.parseDouble(HttpGetGeonamesTask.locationGeoname.getLng()) - 1)
+				+ "&username=" + USER_NAME;
 
 		String data = null;
 		HttpURLConnection httpUrlConnection = null;
 
-		Log.e(TAG, "Params length:" + params.length + " url=" + endPointNearByPlace);
+		Log.e(TAG, "url= " + EARTHQUAKE_ENDPOINT);
 		try {
-			httpUrlConnection = (HttpURLConnection) new URL(endPointNearByPlace).openConnection();
+			httpUrlConnection = (HttpURLConnection) new URL(EARTHQUAKE_ENDPOINT).openConnection();
 			Log.e(TAG, "Success passed -> httpUrlConnection");
 			InputStream in = new BufferedInputStream(httpUrlConnection.getInputStream());
 			Log.e(TAG, "Success passed -> InputStream");
@@ -65,19 +69,26 @@ public class HttpGetGeonamesTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		ArrayList<Geoname> geonames = Utils.extractGeonames(result);
+		ArrayList<Earthquake> earthquakes = Utils.extractEarthquakes(result);
 
-		if(geonames == null || geonames.size() < 1) {
+		if(earthquakes == null || earthquakes.size() < 1) {
 			Toast.makeText(activity, "Internet connection failed or place not found!", Toast.LENGTH_LONG).show();
 			return;
 		}
 
-		locationGeoname = geonames.get(0);
+		EarthquakeDB earthquakesDB = new EarthquakeDB(activity.getApplicationContext());
+		earthquakesDB.addAll(earthquakes);
 
-		GeonamesDB geonamesDB = new GeonamesDB(activity.getApplicationContext());
-		geonamesDB.addAll(geonames);
+		LatLng latlng = null;
+		for(Earthquake earthquake : earthquakes) {
+			// Add a marker in Sydney and move the camera
+			latlng = new LatLng(earthquake.getLat(), earthquake.getLng());
+			String title = String.format("Magnitude: %s", earthquake.getMagnitude());
+			activity.mMap.addMarker(new MarkerOptions().position(latlng).title(title));
+		}
 
-		new HttpGetEarthquakeTask(activity).execute();
+		activity.mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+		activity.mMap.animateCamera(CameraUpdateFactory.zoomBy(2f));
 	}
 
 	private String readStream(InputStream in) {
