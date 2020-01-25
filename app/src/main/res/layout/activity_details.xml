@@ -23,13 +23,13 @@
 
                 <TextView
                     android:id="@+id/txtDatetime"
-                    android:layout_width="50dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp" />
 
                 <TextView
                     android:id="@+id/txtDepth"
-                    android:layout_width="50dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp" />
 

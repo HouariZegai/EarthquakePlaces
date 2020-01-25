@@ -18,17 +18,17 @@
         android:layout_margin="8dp"
         android:layout_alignParentTop="true" >
 
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/search"
+            android:onClick="onSearch" />
         <EditText
             android:id="@+id/editLocation"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="Type Location" />
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/search"
-            android:onClick="onSearch" />
 
     </LinearLayout>
 
